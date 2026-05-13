@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>З Днем Народження, Мамо </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:'Montserrat', sans-serif;
+    background:linear-gradient(135deg,#ffd6e7,#ffe6f2,#ffd1dc,#fff0f5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    position:relative;
+}
+
+/* ===== КАРТКА ===== */
+
+.card{
+    width:100%;
+    max-width:850px;
+    background:rgba(255,255,255,0.35);
+    backdrop-filter:blur(12px);
+    border-radius:30px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(255,105,180,0.25);
+    z-index:2;
+    animation:appear 1.5s ease;
+}
+
+@keyframes appear{
+    from{
+        transform:scale(0.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+h1{
+    font-family:'Pacifico', cursive;
+    font-size:58px;
+    color:#ff3f8e;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    font-size:24px;
+    color:#b94b7b;
+    margin-bottom:25px;
+}
+
+.message{
+    font-size:20px;
+    line-height:1.9;
+    color:#7a3d5a;
+    margin-top:20px;
+}
+
+.footer{
+    margin-top:30px;
+    font-size:28px;
+    color:#ff4f9a;
+    font-weight:600;
+}
+
+.sparkles{
+    font-size:28px;
+    margin-top:20px;
+    animation:sparkle 1.5s infinite alternate;
+}
+
+@keyframes sparkle{
+    from{
+        opacity:0.5;
+        transform:scale(1);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.15);
+    }
+}
+
+/* ===== КВІТИ ===== */
+
+.flowers{
+    width:220px;
+    margin:20px auto;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/* ===== КОНФЕТІ ===== */
+
+.confetti{
+    position:fixed;
+    width:12px;
+    height:12px;
+    top:-20px;
+    border-radius:3px;
+    animation:fall linear infinite;
+    opacity:0.8;
+    z-index:0;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-10vh) rotate(0deg);
+    }
+    100%{
+        transform:translateY(120vh) rotate(720deg);
+    }
+}
+
+/* ===== СЕРДЕЧКА ===== */
+
+.heart{
+    position:fixed;
+    color:#ff4f9a;
+    animation:hearts linear infinite;
+    opacity:0.7;
+    z-index:0;
+}
+
+@keyframes hearts{
+    0%{
+        transform:translateY(100vh) scale(0.5);
+    }
+    100%{
+        transform:translateY(-120vh) scale(1.4);
+    }
+}
+
+/* ===== АДАПТАЦІЯ ДЛЯ ТЕЛЕФОНУ ===== */
+
+@media (max-width:768px){
+
+    body{
+        padding:15px;
+        align-items:flex-start;
+    }
+
+    .card{
+        padding:25px 20px;
+        border-radius:25px;
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+
+    h1{
+        font-size:40px;
+        line-height:1.3;
+    }
+
+    .subtitle{
+        font-size:19px;
+        margin-bottom:20px;
+    }
+
+    .flowers{
+        width:160px;
+    }
+
+    .message{
+        font-size:16px;
+        line-height:1.8;
+    }
+
+    .footer{
+        font-size:22px;
+    }
+
+    .sparkles{
+        font-size:22px;
+    }
+
+    .confetti{
+        width:8px;
+        height:8px;
+    }
+
+    .heart{
+        font-size:16px !important;
+    }
+}
+
+@media (max-width:480px){
+
+    h1{
+        font-size:34px;
+    }
+
+    .subtitle{
+        font-size:17px;
+    }
+
+    .message{
+        font-size:15px;
+    }
+
+    .flowers{
+        width:135px;
+    }
+
+    .card{
+        padding:22px 16px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Анімації -->
+
+<script>
+
+for(let i=0;i<140;i++){
+
+    let confetti=document.createElement('div');
+    confetti.classList.add('confetti');
+
+    confetti.style.left=Math.random()*100+'vw';
+
+    confetti.style.animationDuration=
+        (Math.random()*5+4)+'s';
+
+    confetti.style.background=
+        ['#ff69b4','#ffd700','#ffb6c1','#ffffff','#ffc0cb','#ff8fcf']
+        [Math.floor(Math.random()*6)];
+
+    document.body.appendChild(confetti);
+}
+
+for(let i=0;i<45;i++){
+
+    let heart=document.createElement('div');
+    heart.classList.add('heart');
+
+    /* КВІТОЧКИ */
+    const flowers = ['🌸','🌷','🌺','🌹','💮'];
+
+    heart.innerHTML =
+        flowers[Math.floor(Math.random() * flowers.length)];
+
+    heart.style.left = Math.random()*100 + 'vw';
+
+    heart.style.animationDuration =
+        (Math.random()*7 + 5) + 's';
+
+    heart.style.fontSize =
+        (Math.random()*25 + 15) + 'px';
+
+    document.body.appendChild(heart);
+}
+</script>
+
+<!-- КАРТКА -->
+
+<div class="card">
+
+    <h1>З Днем Народження, Мамо 💖</h1>
+
+    <div class="subtitle">
+        Найрідніша людина у світі 🌸
+    </div>
+
+    <img class="flowers"
+    src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+    alt="Букет квітів">
+
+    <div class="message">
+    Мамо, вітаю тебе з Днем Народження! 🌸💖<br><br>
+
+    У цей особливий день хочу сказати тобі найтепліші слова.
+    Ти — найдорожча, найрідніша та найважливіша людина у моєму житті.
+    Дякую тобі за всю любов, турботу, підтримку та тепло,
+    яке ти даруєш кожного дня. ✨<br><br>
+
+    Ти завжди поруч у найважливіші моменти,
+    завжди допомагаєш, підтримуєш і віриш у мене,
+    навіть тоді, коли я сама в себе не вірю.
+    Саме завдяки тобі в моєму житті так багато добра,
+    щирості та любові. 💕<br><br>
+
+    Бажаю тобі міцного здоров’я,
+    безмежного щастя,
+    спокою в душі,
+    радості в серці
+    та здійснення всіх мрій. 🌷<br><br>
+
+    Нехай кожен день приносить тобі
+    багато посмішок, теплих слів,
+    приємних моментів та щасливих подій.
+    Нехай тебе завжди оточують любов,
+    турбота та люди, які цінують тебе так,
+    як ти цього заслуговуєш. 💫<br><br>
+
+    Бажаю, щоб твої очі завжди світилися щастям,
+    а на душі було легко і спокійно.
+    Нехай у домі завжди панують
+    затишок, гармонія та радість. 🏡💗<br><br>
+
+    Дякую тобі за все 💞<br><br>
+
+    Я хочу, щоб ти завжди була щасливою.
+    З Днем Народження! 🎂🌸✨
+</div>
+
+    <div class="sparkles">
+        ✨ 💗 🌷 💖 🌸 ✨
+    </div>
+
+    <div class="footer">
+        Люблю тебе 💞
+    </div>
+
+</div>
+
+</body>
+</html>
